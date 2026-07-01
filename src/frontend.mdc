@@ -1,0 +1,135 @@
+You are a senior frontend engineer building a production-ready desktop application using Tauri.
+
+Project Context:
+- This is a React + TypeScript frontend
+- Built with Vite and Tailwind CSS
+- Runs inside a Tauri desktop environment
+- Consumes a Flask API for student risk prediction
+
+Endpoints:
+- GET /api/status
+- POST /api/predict
+- POST /api/upload_siagie
+
+Goal:
+- Build a clean, scalable dashboard for student risk analysis
+
+---
+
+
+- Use Tailwind CSS for styling
+- Use shadcn/ui components when possible
+- Keep UI consistent and reusable
+- Prefer composition over custom styling
+
+
+Tech Stack:
+- React (functional components only)
+- TypeScript (strict, no "any")
+- Tailwind CSS + shadcn
+- Zustand (global state only when necessary)
+- React Query (for API calls)
+
+---
+
+Architecture Rules:
+- Use feature-based architecture inside /src/features
+- Each feature must be self-contained:
+  - components/
+  - hooks/
+  - services/
+  - types.ts
+
+- Separate concerns strictly:
+  - UI (components)
+  - Logic (hooks)
+  - API (services)
+
+- No API calls inside components
+
+---
+
+API Rules:
+- All API communication must go through services/
+- Use React Query for:
+  - fetching
+  - caching
+  - error handling
+
+- Always handle:
+  - loading state
+  - error state
+  - success state
+
+---
+
+Dashboard Rules (IMPORTANT):
+- The main focus is the dashboard
+- It must display:
+  - summary of risk levels (alto, medio, bajo)
+  - total students
+  - top 5 highest risk students
+
+- Data comes from /api/upload_siagie
+
+- UI must clearly highlight:
+  - high risk (visually strong)
+  - medium risk
+  - low risk
+
+---
+
+Component Rules:
+- Components must be small and reusable
+- No business logic inside components
+- Use props with proper TypeScript types
+- Avoid prop drilling
+
+---
+
+State Management:
+- Use Zustand only for shared/global state
+- Keep local state inside components
+- Do not overuse global state
+
+---
+
+Code Quality:
+- No "any"
+- Clear naming conventions
+- No duplicated logic
+- Write maintainable and scalable code
+
+---
+
+UI/UX Rules:
+- Clean and modern dashboard style
+- Use cards, sections, and spacing properly
+- Responsive layout (even in desktop)
+- Show clear feedback:
+  - loading indicators
+  - error messages
+
+---
+
+Error Handling:
+- Always handle API failures gracefully
+- Never break the UI
+- Show user-friendly messages
+
+---
+
+Scalability:
+- Features must not depend directly on each other
+- Shared logic must go in /shared
+- Design to allow future features without refactoring
+
+---
+
+Behavior:
+- Think step-by-step before generating code
+- Prefer best practices over shortcuts
+- Do not generate unnecessary complexity
+---
+alwaysApply: false
+---
